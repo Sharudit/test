@@ -1,0 +1,10 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  p-card {
+    margin: 8px 24px;
+    min-width: 400px;
+  }
+}

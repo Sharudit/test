@@ -1,0 +1,29 @@
+<p-card *ngFor="let patient of patients"
+    [header]="patient.name && (patient.name[0].text || patient.name[0].family + patient.name[0].given) || 'Patient'">
+    <ng-template pTemplate="header">
+        <span></span>
+    </ng-template>
+    <div>
+        <span>Пол:&nbsp;</span>
+        <span>{{patient.gender || '&mdash;'}}</span>
+    </div>
+    <div>
+        <span>Дата рождения:&nbsp;</span>
+        <span>{{patient.birthDate | date :'longDate' || '&mdash;'}}</span>
+    </div>
+    <div>
+        <span>Количество записей на приём:&nbsp;</span>
+        <span>{{patientsAppointments[patient.id].length || '&mdash;'}}</span>
+    </div>
+    <div *ngFor="let patientAppoinment of patientsAppointments[patient.id]">
+        <p-divider></p-divider>
+        <div>
+            <span>Дата и время приёма:&nbsp;</span>
+            <span>{{patientAppoinment.start | date :'medium' || '&mdash;'}}</span>
+        </div>
+        <div>
+            <span>Описание:&nbsp;</span>
+            <span>{{patientAppoinment.description || '&mdash;'}}</span>
+        </div>
+    </div>
+</p-card>
